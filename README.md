@@ -1,2 +1,35 @@
-# orderdaily-api
- Orderdaily Composer API
+# Orderdaily API Client for PHP
+
+The Orderdaily API is used for communicating and synchronising your system with Orderdaily. This can be simply done with this library.
+
+## Requirements:
+* [PHP 7.0.0 or higher](https://www.php.net/)
+
+## Installation:
+
+### Composer:
+
+We recommend using [composer](https://getcomposer.org/).
+When composer is installed, execute the following command in your project folder:
+
+```sh
+composer require orderdaily/php-api^1.0
+````
+
+And be sure to include the composer autoload in your project.
+
+### Example usage:
+```php
+$client = new \Orderdaily\Client();
+$client->set_application_name("ApplicationName");
+$client->set_main_api_key(Enter Orderdaily Main API Key);
+$client->set_main_api_key(env("Orderdaily Partner API Key"));
+
+$orders = $client->get_shop_orders(5);
+```
+
+### API Authentication:
+
+There are 2 API endpoints build into this library.
+1. [Orderdaily API](https://orderdaily.nl) - Used by Orderdaily developers for synchronisation development. An API key ist sent to you by Orderdaily.
+2. [Orderdaily Partner API](http://partner.orderdaily.nl) - Used by Partners for forwarding orders to Orderdaily and receive information such as track & trace. The API key can be generated inside your partnertool account when verified as a partner.
