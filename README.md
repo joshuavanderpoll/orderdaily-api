@@ -1,5 +1,10 @@
 # Orderdaily API Client for PHP
 
+<p align="center">
+    <a href="https://github.com/joshuavanderpoll/orderdaily-api"><img src="https://img.shields.io/badge/orderdaily%2Fphp--api-Source%20code-blue?style=flat-square" alt="Source Code"></a>
+    <a href="https://github.com/joshuavanderpoll/orderdaily-api/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-Apache-darkcyan.svg?style=flat-square" alt="Read License"></a>
+</p>
+
 The Orderdaily API is used for communicating and synchronising your system with Orderdaily. This can be simply done with this library.
 
 ## Requirements:
