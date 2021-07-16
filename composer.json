@@ -1,0 +1,25 @@
+{
+    "name": "orderdaily/php-api",
+    "type": "library",
+    "description": "Orderdaily PHP API package",
+    "keywords": ["Orderdaily"],
+    "homepage": "https://orderdaily.nl",
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=7.0"
+    },
+    "authors": [
+        {
+            "name": "Joshua van der Poll",
+            "email": "joshua@orderdaily.nl",
+            "homepage": "https://joshuavanderpoll.nl",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Orderdaily\\": "src/"
+        }
+    }
+}
