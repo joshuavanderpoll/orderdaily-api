@@ -11,7 +11,7 @@ use Exception;
  *
  * @package    Client
  * @author     Original Author <joshua@orderdaily.nl>
- * @version    2.0.0
+ * @version    1.1.0
  * @link       https://orderdaily.nl
  * 
  */
@@ -19,7 +19,7 @@ class Client {
 
     const USER_AGENT_SUFFIX = "orderdaily-api-php/";
     const MAIN_API_BASE_PATH = 'https://orderdaily.nl';
-    const PARTNER_API_BASE_PATH = 'https://partner.orderdaily.nl/';
+    const PARTNER_API_BASE_PATH = 'https://partner.orderdaily.nl';
 
     /**
      * @var array $config
@@ -112,7 +112,7 @@ class Client {
         if($this->config['partner_api_key'] == '') throw new Exception('Partner API Key is not defined.');
 
         return [
-            "Authorization: Bearer ".$this->config['partner_api_key'],
+            "Authorization: ".$this->config['partner_api_key'],
             "User-Agent: ".self::USER_AGENT_SUFFIX.$this->config['application_name'],
             "Content-Type: application/json"
         ];
@@ -311,6 +311,8 @@ class Client {
 
         $response = curl_exec($ch);
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        print_r($response);
 
         if(!$this->is_json($response)) return ["error" => true, "value" => 'Invalid JSON response.']; // Validate JSON
         $response = json_decode($response, true); // Convert to array
@@ -722,5 +724,29 @@ class Client {
      */
     public function delete_product(int $product_id) {
         return $this->api_post_json(self::MAIN_API_BASE_PATH."/api/v1/products/$product_id", [], $this->get_main_api_headers(), "DELETE");
+    }
+
+    /**
+     * Creates a new order. [Per Shop]
+     * @param string $firstname
+     * @param string $lastname
+     * @param string $street
+     * @param string $house_number
+     * @param string $postal_code
+     * @param string $city
+     * @param string $note|null
+     */
+    public function create_order(string $firstname, string $lastname, string $street, string $house_number, string $postal_code, string $city, string $note = null) {
+        $data = [
+            "firstname" => $firstname,
+            "lastname" => $lastname,
+            "street" => $street,
+            "house_number" => $house_number,
+            "postal_code" => $postal_code,
+            "city" => $city,
+            "note" => $note
+        ];
+
+        return $this->api_post_json(self::PARTNER_API_BASE_PATH."/api/orders/create", $data, $this->get_partner_api_headers(), "POST");
     }
 }

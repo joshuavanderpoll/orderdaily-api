@@ -18,7 +18,7 @@ We recommend using [composer](https://getcomposer.org/).
 When composer is installed, execute the following command in your project folder:
 
 ```sh
-composer require orderdaily/php-api^1.0
+composer require orderdaily/php-api^1.1.0
 ````
 
 And be sure to include the composer autoload in your project.
@@ -27,8 +27,8 @@ And be sure to include the composer autoload in your project.
 ```php
 $client = new \Orderdaily\Client();
 $client->set_application_name("ApplicationName");
-$client->set_main_api_key(Enter Orderdaily Main API Key);
-$client->set_main_api_key(env("Orderdaily Partner API Key"));
+$client->set_main_api_key("Enter Orderdaily Main API Key");
+$client->set_partner_api_key("Orderdaily Partner API Key");
 
 $orders = $client->get_shop_orders(5);
 ```
@@ -36,5 +36,5 @@ $orders = $client->get_shop_orders(5);
 ### API Authentication:
 
 There are 2 API endpoints build into this library.
-1. [Orderdaily API](https://orderdaily.nl) - Used by Orderdaily developers for synchronisation development. An API key ist sent to you by Orderdaily.
-2. [Orderdaily Partner API](http://partner.orderdaily.nl) - Used by Partners for forwarding orders to Orderdaily and receive information such as track & trace. The API key can be generated inside your partnertool account when verified as a partner.
+1. [Orderdaily API](https://orderdaily.nl) - Used by Orderdaily developers for synchronisation development. An API key is sent to you by Orderdaily.
+2. [Orderdaily Partner API](http://partner.orderdaily.nl) - Used by Partners for forwarding orders to the Orderdaily bikers. An API key is sent to you by Orderdaily.
